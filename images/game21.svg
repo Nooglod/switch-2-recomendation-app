@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="540" height="380">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#e60012"/><stop offset="1" stop-color="#7a0010"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.35" r="0.8">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="540" height="380" fill="url(#bg)"/>
+<rect width="540" height="380" fill="url(#glow)"/>
+<circle cx="455" cy="70" r="120" fill="#ffffff" opacity="0.06"/>
+<circle cx="80" cy="330" r="90" fill="#000000" opacity="0.10"/>
+<text x="270" y="130" font-size="86" text-anchor="middle">💥</text>
+<text x="270" y="300" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-weight="800" font-size="48" fill="#ffffff" text-anchor="middle" style="paint-order:stroke" stroke="#000000" stroke-opacity="0.25" stroke-width="2"><tspan x="270" dy="0">F-ZERO 99</tspan></text>
+<text x="270" y="358" font-family="Pretendard, sans-serif" font-size="20" fill="#ffffff" opacity="0.85" text-anchor="middle">액션</text>
+</svg>
