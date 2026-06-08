@@ -362,7 +362,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_23",
+    "youtube": "https://www.youtube.com/watch?v=vuSV9Sy28Mw",
     "summary": "\"사라진 전지메기를 찾고, 지하 세계의 비밀을 파헤쳐라!\" 혼돈의 대도시 '카오폴리스'의 신입 대원 3호가 되어, 의문의 액체로 가득 찬 미지의 세계 '얼터너'를 모험하세요!",
     "features": [
       "젤다 세계관 스토리",
@@ -378,7 +378,7 @@ window.GAMES = [
     "genre": "RPG",
     "players": "1인용",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_24",
+    "youtube": "https://www.youtube.com/watch?v=j6eNaiftiWE",
     "summary": "",
     "features": [
       "캐릭터 육성",
@@ -394,7 +394,7 @@ window.GAMES = [
     "genre": "전략/퍼즐",
     "players": "1인용",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_25",
+    "youtube": "https://www.youtube.com/watch?v=GwOUuC8Y5N0",
     "summary": "",
     "features": [
       "다양한 피크민 활용",
@@ -410,7 +410,7 @@ window.GAMES = [
     "genre": "오픈월드/액션",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_26",
+    "youtube": "https://www.youtube.com/watch?v=zw47_q9wbBE",
     "summary": "",
     "features": [
       "창의적인 액션 전투",
@@ -426,7 +426,7 @@ window.GAMES = [
     "genre": "게임",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_27",
+    "youtube": "https://www.youtube.com/watch?v=ZE60HMgVACU",
     "summary": "",
     "features": [
       "어드벤쳐",
