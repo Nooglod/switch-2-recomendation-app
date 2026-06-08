@@ -10,7 +10,7 @@ window.GAMES = [
     "genre": "RPG",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=t-iNpDKuYb8",
+    "youtube": "https://www.youtube.com/embed/t-iNpDKuYb8",
     "summary": "몰입감 있는 스토리 좋아하는 사람 긴 플레이 타임의 RPG 원하는 사람 캐릭터 성장과 전략 전투 좋아하는 사람",
     "features": [
       "실시간 파티 전투",
@@ -26,7 +26,7 @@ window.GAMES = [
     "genre": "액션/퍼즐",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=RSGgCfbYrg0",
+    "youtube": "https://www.youtube.com/embed/RSGgCfbYrg0",
     "summary": "",
     "features": [
       "퍼즐 탐험 요소",
@@ -42,7 +42,7 @@ window.GAMES = [
     "genre": "스포츠",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=OV1gjqhHB2s",
+    "youtube": "https://www.youtube.com/embed/OV1gjqhHB2s",
     "summary": "",
     "features": [
       "다양한 캐릭터 플레이",
@@ -74,7 +74,7 @@ window.GAMES = [
     "genre": "협동/어드벤처",
     "players": "3인 이상",
     "mbti": "XXFJ",
-    "youtube": "https://www.youtube.com/watch?v=ohClxMmNLQQ",
+    "youtube": "https://www.youtube.com/embed/ohClxMmNLQQ",
     "summary": "",
     "features": [
       "다양한 장르 구성",
@@ -90,7 +90,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXFJ",
-    "youtube": "https://www.youtube.com/watch?v=k9xHZXiLvLY",
+    "youtube": "https://www.youtube.com/embed/k9xHZXiLvLY",
     "summary": "편안한 게임 좋아하는 사람 커플·가족 플레이 원하는 사람 귀여운 감성 좋아하는 사람",
     "features": [
       "쉬운 액션 플레이",
@@ -106,7 +106,7 @@ window.GAMES = [
     "genre": "협동/퍼즐",
     "players": "3인 이상",
     "mbti": "XXFJ",
-    "youtube": "https://www.youtube.com/watch?v=fcwngWPXQtg",
+    "youtube": "https://www.youtube.com/embed/fcwngWPXQtg",
     "summary": "",
     "features": [
       "다양한 세계 변화",
@@ -122,7 +122,7 @@ window.GAMES = [
     "genre": "퍼즐",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=j60ynVkvgMw",
+    "youtube": "https://www.youtube.com/embed/j60ynVkvgMw",
     "summary": "",
     "features": [
       "간단한 조작 방식",
@@ -138,7 +138,7 @@ window.GAMES = [
     "genre": "액션/FPS",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=0R_e6GdaOwE",
+    "youtube": "https://www.youtube.com/embed/0R_e6GdaOwE",
     "summary": "",
     "features": [
       "SF 세계관 분위기",
@@ -154,7 +154,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=JStAYvbeSHc&t=27s",
+    "youtube": "https://www.youtube.com/embed/JStAYvbeSHc",
     "summary": "마리오 입문자 친구와 협동 플레이 좋아하는 사람 밝고 경쾌한 액션 원하는 사람",
     "features": [
       "협동 플레이 지원",
@@ -170,7 +170,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXTJ",
-    "youtube": "https://www.youtube.com/watch?v=UAO2urG23S4",
+    "youtube": "https://www.youtube.com/embed/UAO2urG23S4",
     "summary": "",
     "features": [
       "자유로운 탐험",
@@ -186,7 +186,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=U8lJRcUeEMs",
+    "youtube": "https://www.youtube.com/embed/U8lJRcUeEMs",
     "summary": "",
     "features": [
       "빠른 템포 전투",
@@ -202,7 +202,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=brmmV3g4qqo",
+    "youtube": "https://www.youtube.com/embed/brmmV3g4qqo",
     "summary": "",
     "features": [
       "SF 세계관",
@@ -218,7 +218,7 @@ window.GAMES = [
     "genre": "게임",
     "players": "1인용",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=zw47_q9wbBE",
+    "youtube": "https://www.youtube.com/embed/zw47_q9wbBE",
     "summary": "",
     "features": [
       "창의적인 액션 전투",
@@ -234,7 +234,7 @@ window.GAMES = [
     "genre": "슈팅/FPS",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=sZNeut6RR4I",
+    "youtube": "https://www.youtube.com/embed/sZNeut6RR4I",
     "summary": "친구들과 놀 게임 찾는 사람 가족 모임용 게임 원하는 사람 가볍고 웃긴 게임 좋아하는 사람",
     "features": [
       "최대 8인 플레이",
@@ -250,7 +250,7 @@ window.GAMES = [
     "genre": "스포츠/레이싱",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=3pE23YTYEZM",
+    "youtube": "https://www.youtube.com/embed/3pE23YTYEZM",
     "summary": "\"사라진 전지메기를 찾고, 지하 세계의 비밀을 파헤쳐라!\" 혼돈의 대도시 '카오폴리스'의 신입 대원 3호가 되어, 의문의 액체로 가득 찬 미지의 세계 '얼터너'를 모험하세요!",
     "features": [
       "다양한 아이템 배틀",
@@ -266,7 +266,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=mQqVCYDD3sA",
+    "youtube": "https://www.youtube.com/embed/mQqVCYDD3sA",
     "summary": "",
     "features": [
       "다양한 미니게임",
@@ -282,7 +282,7 @@ window.GAMES = [
     "genre": "슈팅/FPS",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=GUYDXVDLmns",
+    "youtube": "https://www.youtube.com/embed/GUYDXVDLmns",
     "summary": "\"사라진 전지메기를 찾고, 지하 세계의 비밀을 파헤쳐라!\" 혼돈의 대도시 '카오폴리스'의 신입 대원 3호가 되어, 의문의 액체로 가득 찬 미지의 세계 '얼터너'를 모험하세요!",
     "features": [
       "변신 액션",
@@ -298,7 +298,7 @@ window.GAMES = [
     "genre": "MOBA",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=wVFnPHyAyPg",
+    "youtube": "https://www.youtube.com/embed/wVFnPHyAyPg",
     "summary": "",
     "features": [
       "포켓몬별 역할 분담",
@@ -314,7 +314,7 @@ window.GAMES = [
     "genre": "게임",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/watch?v=GKXS_YA9s7E",
+    "youtube": "https://www.youtube.com/embed/GKXS_YA9s7E",
     "summary": "",
     "features": [
       "다양한 영웅 시스템",
@@ -330,7 +330,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=haoiSDKghLE",
+    "youtube": "https://www.youtube.com/embed/haoiSDKghLE",
     "summary": "",
     "features": [
       "미래형 스피드 액션",
@@ -346,7 +346,7 @@ window.GAMES = [
     "genre": "슈팅/FPS",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/watch?v=mIddsPkdX9U",
+    "youtube": "https://www.youtube.com/embed/mIddsPkdX9U",
     "summary": "\"사라진 전지메기를 찾고, 지하 세계의 비밀을 파헤쳐라!\" 혼돈의 대도시 '카오폴리스'의 신입 대원 3호가 되어, 의문의 액체로 가득 찬 미지의 세계 '얼터너'를 모험하세요!",
     "features": [
       "다채로운 스테이지",
