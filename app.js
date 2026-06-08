@@ -271,20 +271,8 @@ function Detail({ id, go }) {
     h("div", { className: "recommends" }, recs.map((r, i) => h("p", { key: i }, r))),
 
     // Bottom Genre Navigation (The red grid)
-    h("div", { className: "detail-genre-nav" },
-      GENRE_CATS.map(c => 
-        h("div", { 
-          key: c.value, 
-          className: "d-genre-item", 
-          onClick: () => go({ name: "list", method: "genre", value: c.value }) 
-        },
-          h("div", { className: "icon" }, genreIcons[c.value] || "🎮"),
-          h("div", { className: "label" }, c.label.replace(" 게임 추천", "").replace(" 게임", ""))
-        )
-      )
-    ),
+   
     
-    h("p", { className: "footnote" }, "트레일러 영상은 placeholder 입니다 · games.js의 youtube 값을 실제 YouTube embed ID로 교체하세요.")
   );
 }
 /* ============================ Router ================================== */
