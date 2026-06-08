@@ -14,13 +14,13 @@ const INDIE = new Set(["game4","game5","game7","game11","game12","game38","game3
 const ROGUE = new Set(["game4","game11","game12","game41","game21"]);
 
 const GENRE_CATS = [
-  { value: "action", label: "액션 게임 추천",        sub: "박진감 넘치는 손맛!",   match: g => /액션/.test(g.genre) },
-  { value: "fps",    label: "슈팅/FPS 게임 추천",     sub: "짜릿한 슈팅 플레이!",   match: g => /슈팅|FPS/.test(g.genre) },
-  { value: "rpg",    label: "RPG 게임 추천",          sub: "깊이 있는 대모험!",     match: g => /RPG/.test(g.genre) },
-  { value: "sports", label: "스포츠/레이싱 게임 추천", sub: "스피드와 경쟁의 쾌감!", match: g => /스포츠|레이싱/.test(g.genre) },
-  { value: "indie",  label: "인디 게임 추천",         sub: "개성 넘치는 명작!",     match: g => INDIE.has(g.id) },
-  { value: "rogue",  label: "로그라이크 게임 추천",    sub: "반복 속의 짜릿함!",     match: g => /로그라이/.test(g.genre) || ROGUE.has(g.id) },
-  { value: "moba",   label: "MOBA 게임 추천",         sub: "전략적인 팀 배틀!",     match: g => /MOBA/.test(g.genre) },
+  { value: "action", label: "액션 게임 추천",        sub: "짜릿한 손맛과 타격감! 당신의 한계를 시험할 다이내믹한 플레이",   match: g => /액션/.test(g.genre) },
+  { value: "fps",    label: "슈팅/FPS 게임 추천",     sub: "시원하게 터지는 쾌감과 전장을 지배하는 짜릿함",   match: g => /슈팅|FPS/.test(g.genre) },
+  { value: "rpg",    label: "RPG 게임 추천",          sub: "당신이 주인공이 되는 방대한 이야기",     match: g => /RPG/.test(g.genre) },
+  { value: "sports", label: "스포츠/레이싱 게임 추천", sub: "0.1초의 승부! 심장을 뛰게 할 압도적인 스피드와 승리의 쾌감", match: g => /스포츠|레이싱/.test(g.genre) },
+  { value: "indie",  label: "인디 게임 추천",         sub: "세상에 없던 독창적인 아이디어와 감성",     match: g => INDIE.has(g.id) },
+  { value: "rogue",  label: "로그라이크 게임 추천",    sub: "매번 새로워지는 던전과 예측 불가의 모험",     match: g => /로그라이/.test(g.genre) || ROGUE.has(g.id) },
+  { value: "moba",   label: "MOBA 게임 추천",         sub: "협동이 곧 승리! 실시간으로 펼쳐지는 완벽한 팀플레이와 전략 싸움",     match: g => /MOBA/.test(g.genre) },
 ];
 
 const IP_CATS = [
@@ -118,14 +118,50 @@ function BottomNav({ active, go }) {
 }
 
 /* Image card with caption overlay (used for category cards & picker). */
-function ImageCard({ game, title, sub, badge, wide, onClick }) {
-  return h("div", { className: "img-card" + (wide ? " wide" : ""), onClick },
+/* 1. ImageCard 업데이트 (tall 속성 추가) */
+function ImageCard({ game, title, sub, badge, wide, tall, onClick }) {
+  let cls = "img-card";
+  if (wide) cls += " wide";
+  if (tall) cls += " tall"; // 세로로 2칸을 차지하는 카드용
+  
+  return h("div", { className: cls, onClick },
     game ? h(Cover, { game, alt: title, className: "card-img" }) : null,
     h("div", { className: "card-shade" }),
     h("div", { className: "card-cap" },
       badge ? h("div", { className: "badge" }, badge) : null,
       h("div", { className: "cap-title" }, title),
       sub ? h("div", { className: "cap-sub" }, sub) : null));
+}
+
+function Picker({ go }) {
+  const reps = {
+    genre: repGame("genre", "action"),
+    human: repGame("human", "3인 이상"),
+    ip:    repGame("ip", "마리오"),
+    mbti:  repGame("mbti", "XXTP"),
+  };
+  
+  const card = (cls, method, badge, title, desc) =>
+    h(ImageCard, { 
+      wide: cls === "wide", 
+      tall: cls === "tall", 
+      game: reps[method], 
+      badge, 
+      title, 
+      sub: desc,
+      onClick: () => go({ name: "category", method }) 
+    });
+
+  return h("div", { className: "screen has-nav" },
+    h("div", { className: "topbar" }, h(Nlogo)),
+    h("h1", { className: "page-title" }, "추천 방식 선택"),
+    h("p", { className: "page-sub" }, "\"오늘은 어떤 모험이 끌리시나요?\""),
+    h("div", { className: "method-grid" },
+      // 스크린샷과 정확히 일치하는 텍스트와 그리드 클래스
+      card("tall", "genre", "장르", "장르별 추천", "액션, RPG 등 취향대로!"),
+      card("", "human", "인원", "인원별 추천", "혼자서 해도, 다같이 해도 즐거운 게임!"),
+      card("", "ip", "IP", "대표 IP별 추천", "마리오, 젤다 등 인기 시리즈!"),
+      card("wide", "mbti", "MBTI", "MBTI별 추천", "내 성향에 딱 맞는 맞춤 추천!")));
 }
 
 /* Large result card (one game). */
@@ -151,28 +187,6 @@ function Landing({ go }) {
       h("button", { className: "start-btn", onClick: () => go({ name: "picker" }) }, "시작하기")));
 }
 
-function Picker({ go }) {
-  const reps = {
-    genre: repGame("genre", "action"),
-    human: repGame("human", "3인 이상"),
-    ip: repGame("ip", "마리오"),
-    mbti: repGame("mbti", "XXTP"),
-  };
-  const card = (cls, method, badge, title, desc) =>
-    h(ImageCard, { wide: cls === "wide", game: reps[method], badge, title, sub: desc,
-      onClick: () => go({ name: "category", method }) });
-  return h("div", { className: "screen has-nav" },
-    h("div", { className: "topbar" }, h(Nlogo)),
-    h("h1", { className: "page-title" }, "추천 방식 선택"),
-    h("p", { className: "page-sub" }, "\"오늘은 어떤 모험이 끌리시나요?\""),
-    h("div", { className: "method-grid" },
-      card("tall", "genre", "장르", "장르별 추천", "액션, RPG 등 취향대로!"),
-      card("", "human", "인원", "인원별 추천", "혼자서 해도, 다같이 해도!"),
-      card("", "ip", "IP", "대표 IP별 추천", "마리오, 젤다 등 인기 시리즈!"),
-      card("wide", "mbti", "MBTI", "MBTI별 추천", "내 성향에 딱 맞는 맞춤 추천!")),
-    h(BottomNav, { active: null, go }));
-}
-
 function Category({ method, go }) {
   const meta = CATEGORY_META[method];
   const list = CATS[method] || [];
@@ -184,10 +198,13 @@ function Category({ method, go }) {
       list.map((c, i) => h(ImageCard, {
         key: c.value, game: repGame(method, c.value),
         title: c.label, sub: c.sub,
-        wide: method === "genre" && i === 0,
+        wide: (method === "genre" && (i === 0 || i === 3 || i === 6)) ||
+              (method === "human" && i === 2) ||
+              (method === "ip"    && i === 6),
+        tall: (method === "human" && i === 1) ||
+              (method === "ip"    && (i === 0 || i === 3)),
         onClick: () => go({ name: "list", method, value: c.value }),
-      }))),
-    h(BottomNav, { active: method, go }));
+      }))));
 }
 
 function Results({ method, value, go }) {
@@ -200,44 +217,79 @@ function Results({ method, value, go }) {
     c && c.sub ? h("p", { className: "page-sub" }, "\"" + c.sub + "\"") : null,
     h("div", { className: "big-list" },
       list.length === 0 ? h("div", { className: "empty" }, "해당 조건의 게임이 없어요.") : null,
-      list.map(g => h(BigCard, { key: g.id, game: g, onClick: () => go({ name: "detail", id: g.id }) }))),
-    h(BottomNav, { active: method, go }));
+      list.map(g => h(BigCard, { key: g.id, game: g, onClick: () => go({ name: "detail", id: g.id }) }))));
 }
 
 function Detail({ id, go }) {
   const g = GAMES.find(x => x.id === id);
   if (!g) return h("div", { className: "screen" }, h("p", { className: "empty" }, "게임을 찾을 수 없어요."));
-  const summary = g.summary || (g.genre + " 장르의 " + g.players + " 추천작!\n" + g.features.join(", ") + "을(를) 즐길 수 있어요.");
-  const recs = g.features.map(f => f + "을(를) 좋아하는 분");
-  return h("div", { className: "screen has-nav" },
+
+  // Text formatting
+  const summary = g.summary || "특수 경찰이 되어,\n인류를 위협하는 존재에 맞서라!";
+  const recs = g.features.map(f => `"${f} 좋아하는 분"`);
+
+  // Genre icon mapping
+  const genreIcons = { action: "🍄", fps: "🔫", rpg: "⚔️", sports: "🏎️", indie: "⭐", rogue: "💀", moba: "🏰" };
+
+  return h("div", { className: "screen has-nav detail-screen" },
     h(TopBar, { onBack: () => go({ name: "picker" }), onHome: () => go({ name: "landing" }) }),
-    h("div", { className: "detail-cover" }, h(Cover, { game: g, alt: g.name })),
+    
+    // Title & Tags area
     h("h1", { className: "detail-title" }, g.name),
     h("div", { className: "tags" },
-      h("span", { className: "tag genre" }, g.genre),
-      h("span", { className: "tag players" }, g.players)),
-    h("span", { className: "trailer-label" }, "공식 트레일러"),
+      g.mbti ? h("span", { className: "tag genre" }, g.mbti + " 추천") : null,
+      h("span", { className: "tag players" }, g.players)
+    ),
+
+    // Trailer area
+    h("div", { className: "trailer-label" }, "공식 트레일러"),
     h("div", { className: "trailer" }, h("iframe", { src: g.youtube, title: g.name + " 트레일러", allowFullScreen: true })),
+
+    // Section 1: Summary
     h("div", { className: "section-label" }, "🦑 3초 요약 줄거리"),
-    h("div", { className: "summary" }, summary),
+    h("div", { className: "summary" }, `"${summary}"`),
+
+    // Section 2: Features Grid
     h("div", { className: "section-label" }, "🔫 핵심 게임 설명"),
-    h("div", { className: "feature-grid" }, g.features.map((f, i) => h("div", { key: i, className: "feature" }, h("div", { className: "fbox" }, f)))),
+    h("div", { className: "feature-grid" }, 
+      g.features.map((f, i) => 
+        h("div", { key: i, className: "feature" }, 
+          h("div", { className: "ftitle" }, f),
+          h("div", { className: "fbox" }, "게임의 핵심 재미를\n경험해보세요.")
+        )
+      )
+    ),
+
+    // Section 3: Recommendations
     h("div", { className: "section-label" }, "🎯 이런 분에게 강력 추천!"),
     h("div", { className: "recommends" }, recs.map((r, i) => h("p", { key: i }, r))),
-    h("div", { className: "mbti-nav" },
-      MBTI_CATS.map(m => h("div",
-        { key: m.value, className: "mbti-item" + (m.value === g.mbti ? " active" : ""),
-          onClick: () => go({ name: "list", method: "mbti", value: m.value }) },
-        h("div", { className: "big" }, m.value.slice(2)),
-        h("div", { className: "small" }, m.value)))),
-    h("p", { className: "footnote" }, "트레일러 영상은 placeholder 입니다 · games.js의 youtube 값을 실제 YouTube embed ID로 교체하세요."),
-    h(BottomNav, { active: null, go }));
-}
 
+    // Bottom Genre Navigation (The red grid)
+    h("div", { className: "detail-genre-nav" },
+      GENRE_CATS.map(c => 
+        h("div", { 
+          key: c.value, 
+          className: "d-genre-item", 
+          onClick: () => go({ name: "list", method: "genre", value: c.value }) 
+        },
+          h("div", { className: "icon" }, genreIcons[c.value] || "🎮"),
+          h("div", { className: "label" }, c.label.replace(" 게임 추천", "").replace(" 게임", ""))
+        )
+      )
+    ),
+    
+    h("p", { className: "footnote" }, "트레일러 영상은 placeholder 입니다 · games.js의 youtube 값을 실제 YouTube embed ID로 교체하세요.")
+  );
+}
 /* ============================ Router ================================== */
 function App() {
   const [route, setRoute] = useState({ name: "landing" });
-  const go = (r) => { window.scrollTo(0, 0); setRoute(r); };
+  const go = (r) => {
+    (document.querySelector('.app-frame') || window).scrollTo({ top: 0, behavior: 'instant' });
+    setRoute(r);
+  };
+  const showNav = route.name !== "landing";
+  const navActive = (route.name === "category" || route.name === "list") ? route.method : null;
   let view;
   switch (route.name) {
     case "picker":   view = h(Picker, { go }); break;
@@ -246,7 +298,8 @@ function App() {
     case "detail":   view = h(Detail, { id: route.id, go }); break;
     default:         view = h(Landing, { go });
   }
-  return h("div", { className: "app-frame" }, view);
+  return h("div", { className: "app-frame" },
+    view,
+    showNav ? h(BottomNav, { active: navActive, go }) : null);
 }
-
 ReactDOM.createRoot(document.getElementById("root")).render(h(App));
