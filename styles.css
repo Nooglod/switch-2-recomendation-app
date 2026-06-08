@@ -83,15 +83,6 @@ html, body {
 .landing { text-align: center; min-height: 100vh; display: flex; flex-direction: column; }
 .landing-hero {
   flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
-  background:
-    linear-gradient(180deg,
-      rgba(0, 0, 0, 0.25)  0%,
-      rgba(0, 0, 0, 0.55) 45%,
-      rgba(0, 0, 0, 0.85) 80%,
-      #000000             100%
-    ),
-    url('images/switch2-hero.png') center top / 110% auto no-repeat,
-    var(--bg-0);
   border-radius: 0 0 24px 24px;
 }
 .landing .switch2 { font-size: 60px; font-weight: 300; letter-spacing: 1px; }
@@ -709,7 +700,24 @@ html, body {
 }
 
 /* Landing fills the frame height without needing 100vh */
-.screen.landing { min-height: 100%; }
+.screen.landing { min-height: 100%; position: relative; overflow: hidden; }
+.screen.landing > * { position: relative; z-index: 1; }
+.screen.landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.30)  0%,
+      rgba(0, 0, 0, 0.72) 40%,
+      rgba(0, 0, 0, 0.97) 62%,
+      #000000             75%
+    ),
+    url('images/switch2-hero.png') center top / 105% auto no-repeat;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+}
 
 /* ===== Switch 2 hero background on all nav screens ======================= */
 /* Replace the old 8%-opacity hero.svg with the Switch 2 photo.

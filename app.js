@@ -243,7 +243,13 @@ function Detail({ id, go }) {
 
     // Trailer area
     h("div", { className: "trailer-label" }, "공식 트레일러"),
-    h("div", { className: "trailer" }, h("iframe", { src: g.youtube, title: g.name + " 트레일러", allowFullScreen: true })),
+    h("div", { className: "trailer" }, h("iframe", {
+      src: g.youtube,
+      title: g.name + " 트레일러",
+      allowFullScreen: true,
+      frameBorder: "0",
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    })),
 
     // Section 1: Summary
     h("div", { className: "section-label" }, "🦑 3초 요약 줄거리"),
