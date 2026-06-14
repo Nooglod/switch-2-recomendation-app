@@ -53,10 +53,10 @@ const CATEGORY_META = {
   human: { title: "인원별 추천 선택",   sub: "플레이 인원을 선택하고 맞춤형 리스트를 만나보세요." },
 };
 const NAV_TABS = [
-  { method: "genre", label: "장르", icon: "grid"   },
-  { method: "human", label: "인원", icon: "users"  },
-  { method: "ip",    label: "IP",   icon: "star"   },
-  { method: "mbti",  label: "MBTI", icon: "person" },
+  { method: "genre", label: "장르", icon: "images/icons/장르.png"  },
+  { method: "human", label: "인원", icon: "images/icons/1인.png"   },
+  { method: "ip",    label: "IP",   icon: "images/icons/IP.png"    },
+  { method: "mbti",  label: "MBTI", icon: "images/icons/MBTI.png"  },
 ];
 
 function catFor(method, value) { return (CATS[method] || []).find(c => c.value === value); }
@@ -188,17 +188,17 @@ function BottomNav({ active, go }) {
     NAV_TABS.map(t => h("div",
       { key: t.method, className: "bn-item" + (t.method === active ? " active" : ""),
         onClick: () => go({ name: "category", method: t.method }) },
-      h("span", { className: "bn-icon" }, h(Icon, { name: t.icon, size: 22 })),
+      h("span", { className: "bn-icon" }, h("img", { src: t.icon, width: 22, height: 22, style: { objectFit: "contain" } })),
       h("span", { className: "bn-label" }, t.label))));
 }
 
 const GENRE_NAV_TABS = [
-  { value: "action", label: "액션-MOBA",  icon: "zap"    },
-  { value: "fps",    label: "슈팅",      icon: "target" },
-  { value: "rpg",    label: "RPG",       icon: "sword"  },
-  { value: "sports", label: "스포츠",    icon: "flag"   },
-  { value: "indie",  label: "인디",      icon: "gem"    },
-  { value: "rogue",  label: "로그라이크", icon: "dice"   },
+  { value: "action", label: "액션-MOBA",  icon: "images/icons/액션 Icon.png"       },
+  { value: "fps",    label: "슈팅",       icon: "images/icons/FPS Icon.png"        },
+  { value: "rpg",    label: "RPG",        icon: "images/icons/RPG Icon.png"        },
+  { value: "sports", label: "스포츠",     icon: "images/icons/Racing Icon.png"     },
+  { value: "indie",  label: "인디",       icon: "images/icons/인디 Icon.png"       },
+  { value: "rogue",  label: "로그라이크",  icon: "images/icons/로그라이크  Icon.png" },
 ];
 
 function GenreBottomNav({ active, go }) {
@@ -206,7 +206,7 @@ function GenreBottomNav({ active, go }) {
     GENRE_NAV_TABS.map(t => h("div",
       { key: t.value, className: "bn-item" + (t.value === active ? " active" : ""),
         onClick: () => go({ name: "list", method: "genre", value: t.value }) },
-      h("span", { className: "bn-icon" }, h(Icon, { name: t.icon, size: 18 })),
+      h("span", { className: "bn-icon" }, h("img", { src: t.icon, width: 18, height: 18, style: { objectFit: "contain" } })),
       h("span", { className: "bn-label" }, t.label))));
 }
 
@@ -226,11 +226,24 @@ function ImageCard({ game, title, sub, badge, wide, tall, onClick }) {
 }
 
 function Picker({ go }) {
+  const repPools = useMemo(() => ({
+    genre: GENRE_CATS.map(c => repGame("genre", c.value)).filter(Boolean),
+    human: HUMAN_CATS.map(c => repGame("human", c.value)).filter(Boolean),
+    ip:    IP_CATS.map(c => repGame("ip", c.value)).filter(Boolean),
+    mbti:  MBTI_CATS.map(c => repGame("mbti", c.value)).filter(Boolean),
+  }), []);
+
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 10000);
+    return () => clearInterval(id);
+  }, []);
+
   const reps = {
-    genre: repGame("genre", "action"),
-    human: repGame("human", "3인 이상"),
-    ip:    repGame("ip", "마리오"),
-    mbti:  repGame("mbti", "XXTP"),
+    genre: repPools.genre[tick % repPools.genre.length],
+    human: repPools.human[(tick + 1) % repPools.human.length],
+    ip:    repPools.ip[(tick + 2) % repPools.ip.length],
+    mbti:  repPools.mbti[(tick + 3) % repPools.mbti.length],
   };
   
   const card = (cls, method, badge, title, desc) =>
