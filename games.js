@@ -213,22 +213,6 @@ window.GAMES = [
     "en": "Astral Chain"
   },
   {
-    "id": "game14",
-    "name": "젤다 야생의 숨결",
-    "genre": "게임",
-    "players": "1인용",
-    "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/zw47_q9wbBE",
-    "summary": "",
-    "features": [
-      "창의적인 액션 전투",
-      "자유로운 오픈월드",
-      "광활한 세계 탐험"
-    ],
-    "image": "images/game14.svg",
-    "en": "The Legend of Zelda Breath of the Wild"
-  },
-  {
     "id": "game15",
     "name": "슈퍼마리오 파티 잼버리",
     "genre": "슈팅/FPS",

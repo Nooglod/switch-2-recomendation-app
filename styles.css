@@ -204,7 +204,7 @@ html, body {
 .bn-label { font-size: 11px; font-weight: 800; }
 
 /* Genre results: 7-tab nav */
-.genre-bottom-nav { grid-template-columns: repeat(7, 1fr); gap: 2px; padding-left: 4px; padding-right: 4px; }
+.genre-bottom-nav { grid-template-columns: repeat(6, 1fr); gap: 2px; padding-left: 4px; padding-right: 4px; }
 .genre-bottom-nav .bn-item  { padding: 10px 0; border-radius: 10px; gap: 4px; }
 .genre-bottom-nav .bn-label { font-size: 9px; letter-spacing: -0.3px; }
 

@@ -14,13 +14,12 @@ const INDIE = new Set(["game4","game5","game7","game11","game12","game38","game3
 const ROGUE = new Set(["game4","game11","game12","game41","game21"]);
 
 const GENRE_CATS = [
-  { value: "action", label: "액션 게임 추천",        sub: "짜릿한 손맛과 타격감! 당신의 한계를 시험할 다이내믹한 플레이",   match: g => /액션/.test(g.genre) },
+  { value: "action", label: "액션-MOBA 게임 추천",    sub: "짜릿한 손맛과 타격감! 당신의 한계를 시험할 다이내믹한 플레이",   match: g => /액션|MOBA/.test(g.genre) },
   { value: "fps",    label: "슈팅/FPS 게임 추천",     sub: "시원하게 터지는 쾌감과 전장을 지배하는 짜릿함",   match: g => /슈팅|FPS/.test(g.genre) },
   { value: "rpg",    label: "RPG 게임 추천",          sub: "당신이 주인공이 되는 방대한 이야기",     match: g => /RPG/.test(g.genre) },
   { value: "sports", label: "스포츠/레이싱 게임 추천", sub: "0.1초의 승부! 심장을 뛰게 할 압도적인 스피드와 승리의 쾌감", match: g => /스포츠|레이싱/.test(g.genre) },
   { value: "indie",  label: "인디 게임 추천",         sub: "세상에 없던 독창적인 아이디어와 감성",     match: g => INDIE.has(g.id) },
   { value: "rogue",  label: "로그라이크 게임 추천",    sub: "매번 새로워지는 던전과 예측 불가의 모험",     match: g => /로그라이/.test(g.genre) || ROGUE.has(g.id) },
-  { value: "moba",   label: "MOBA 게임 추천",         sub: "협동이 곧 승리! 실시간으로 펼쳐지는 완벽한 팀플레이와 전략 싸움",     match: g => /MOBA/.test(g.genre) },
 ];
 
 const IP_CATS = [
@@ -189,13 +188,12 @@ function BottomNav({ active, go }) {
 }
 
 const GENRE_NAV_TABS = [
-  { value: "action", label: "액션",      icon: "zap"    },
+  { value: "action", label: "액션-MOBA",  icon: "zap"    },
   { value: "fps",    label: "슈팅",      icon: "target" },
   { value: "rpg",    label: "RPG",       icon: "sword"  },
   { value: "sports", label: "스포츠",    icon: "flag"   },
   { value: "indie",  label: "인디",      icon: "gem"    },
   { value: "rogue",  label: "로그라이크", icon: "dice"   },
-  { value: "moba",   label: "MOBA",      icon: "shield" },
 ];
 
 function GenreBottomNav({ active, go }) {
