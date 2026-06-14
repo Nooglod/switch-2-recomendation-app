@@ -83,7 +83,7 @@ function fetchRawgCover(game) {
 }
 
 function Cover({ game, alt, className }) {
-  const localChain = ["images/" + game.id + ".png", "images/" + game.id + ".jpg"];
+  const localChain = ["images/" + game.id + ".avif", "images/" + game.id + ".png", "images/" + game.id + ".jpg"];
   const generated = "images/" + game.id + ".svg";
   const [remote, setRemote] = useState(null);
   useEffect(() => { let live = true; fetchRawgCover(game).then(u => { if (live && u) setRemote(u); }); return () => { live = false; }; }, [game.id]);
@@ -101,6 +101,11 @@ function Cover({ game, alt, className }) {
 /* ============================ SVG icons =============================== */
 const ICONS = {
   // Main nav
+  list: [
+    ["line", { x1:3, y1:5,  x2:17, y2:5  }],
+    ["line", { x1:3, y1:10, x2:17, y2:10 }],
+    ["line", { x1:3, y1:15, x2:17, y2:15 }],
+  ],
   grid: [
     ["rect", { x:3,  y:3,  width:6, height:6, rx:1 }],
     ["rect", { x:11, y:3,  width:6, height:6, rx:1 }],
@@ -247,7 +252,10 @@ function Picker({ go }) {
       card("tall", "genre", "장르", "장르별 추천", "액션, RPG 등 취향대로!"),
       card("", "human", "인원", "인원별 추천", "혼자서 해도, 다같이 해도 즐거운 게임!"),
       card("", "ip", "IP", "대표 IP별 추천", "마리오, 젤다 등 인기 시리즈!"),
-      card("wide", "mbti", "MBTI", "MBTI별 추천", "내 성향에 딱 맞는 맞춤 추천!")));
+      card("wide", "mbti", "MBTI", "MBTI별 추천", "내 성향에 딱 맞는 맞춤 추천!")),
+    h("button", { className: "view-all-btn", onClick: () => go({ name: "all-games" }) },
+      h(Icon, { name: "list", size: 18 }),
+      "전체 게임 목록 보기"));
 }
 
 /* Large result card (one game). */
@@ -355,6 +363,15 @@ function Detail({ id, go }) {
 
   );
 }
+function AllGames({ go }) {
+  return h("div", { className: "screen has-nav" },
+    h(TopBar, { onBack: () => go({ name: "picker" }), onHome: () => go({ name: "landing" }) }),
+    h("h1", { className: "page-title" }, "전체 게임 목록"),
+    h("p", { className: "page-sub" }, '"Switch 2 팝업스토어의 모든 게임"'),
+    h("div", { className: "big-list" },
+      GAMES.map(g => h(BigCard, { key: g.id, game: g, onClick: () => go({ name: "detail", id: g.id }) }))));
+}
+
 /* ============================ Router ================================== */
 function App() {
   const [route, setRoute] = useState({ name: "landing" });
@@ -369,11 +386,12 @@ function App() {
 
   let view;
   switch (route.name) {
-    case "picker":   view = h(Picker, { go }); break;
-    case "category": view = h(Category, { method: route.method, go }); break;
-    case "list":     view = h(Results, { method: route.method, value: route.value, go }); break;
-    case "detail":   view = h(Detail, { id: route.id, go }); break;
-    default:         view = h(Landing, { go });
+    case "picker":    view = h(Picker, { go }); break;
+    case "category":  view = h(Category, { method: route.method, go }); break;
+    case "list":      view = h(Results, { method: route.method, value: route.value, go }); break;
+    case "detail":    view = h(Detail, { id: route.id, go }); break;
+    case "all-games": view = h(AllGames, { go }); break;
+    default:          view = h(Landing, { go });
   }
 
   const nav = !showNav ? null

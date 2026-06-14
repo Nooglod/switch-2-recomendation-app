@@ -253,6 +253,24 @@ html, body {
 .method-grid .img-card      { min-height: 150px; }
 .method-grid .img-card.wide { min-height: 170px; }
 
+/* ── View-all button (Picker) ───────────────────────────────────────────── */
+.view-all-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; margin-top: 14px;
+  padding: 16px; border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--ink-dim);
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.view-all-btn:hover {
+  background: rgba(230, 0, 18, 0.12);
+  border-color: rgba(230, 0, 18, 0.4);
+  color: #fff;
+}
+.view-all-btn:active { transform: scale(0.98); }
+
 /* ── Category grid ──────────────────────────────────────────────────────── */
 .cat-grid {
   display: grid;
