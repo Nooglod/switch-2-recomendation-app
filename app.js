@@ -53,10 +53,10 @@ const CATEGORY_META = {
   human: { title: "인원별 추천 선택",   sub: "플레이 인원을 선택하고 맞춤형 리스트를 만나보세요." },
 };
 const NAV_TABS = [
-  { method: "genre", label: "장르", icon: "images/icons/장르.png"  },
-  { method: "human", label: "인원", icon: "images/icons/1인.png"   },
-  { method: "ip",    label: "IP",   icon: "images/icons/IP.png"    },
-  { method: "mbti",  label: "MBTI", icon: "images/icons/MBTI.png"  },
+  { method: "genre", label: "장르", icon: "images/icons/genre.png"   },
+  { method: "human", label: "인원", icon: "images/icons/players.png" },
+  { method: "ip",    label: "IP",   icon: "images/icons/IP.png"      },
+  { method: "mbti",  label: "MBTI", icon: "images/icons/MBTI.png"    },
 ];
 
 function catFor(method, value) { return (CATS[method] || []).find(c => c.value === value); }
@@ -193,12 +193,12 @@ function BottomNav({ active, go }) {
 }
 
 const GENRE_NAV_TABS = [
-  { value: "action", label: "액션-MOBA",  icon: "images/icons/액션 Icon.png"       },
-  { value: "fps",    label: "슈팅",       icon: "images/icons/FPS Icon.png"        },
-  { value: "rpg",    label: "RPG",        icon: "images/icons/RPG Icon.png"        },
-  { value: "sports", label: "스포츠",     icon: "images/icons/Racing Icon.png"     },
-  { value: "indie",  label: "인디",       icon: "images/icons/인디 Icon.png"       },
-  { value: "rogue",  label: "로그라이크",  icon: "images/icons/로그라이크  Icon.png" },
+  { value: "action", label: "액션-MOBA",  icon: "images/icons/action.png"  },
+  { value: "fps",    label: "슈팅",       icon: "images/icons/fps.png"     },
+  { value: "rpg",    label: "RPG",        icon: "images/icons/rpg.png"     },
+  { value: "sports", label: "스포츠",     icon: "images/icons/racing.png"  },
+  { value: "indie",  label: "인디",       icon: "images/icons/indie.png"   },
+  { value: "rogue",  label: "로그라이크",  icon: "images/icons/rogue.png"   },
 ];
 
 function GenreBottomNav({ active, go }) {
