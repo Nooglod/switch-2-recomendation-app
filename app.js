@@ -54,10 +54,10 @@ const CATEGORY_META = {
   human: { title: "인원별 추천 선택",   sub: "플레이 인원을 선택하고 맞춤형 리스트를 만나보세요." },
 };
 const NAV_TABS = [
-  { method: "genre", label: "장르", icon: "🎮" },
-  { method: "human", label: "인원", icon: "👥" },
-  { method: "ip",    label: "IP",   icon: "🌟" },
-  { method: "mbti",  label: "MBTI", icon: "🧬" },
+  { method: "genre", label: "장르", icon: "grid"   },
+  { method: "human", label: "인원", icon: "users"  },
+  { method: "ip",    label: "IP",   icon: "star"   },
+  { method: "mbti",  label: "MBTI", icon: "person" },
 ];
 
 function catFor(method, value) { return (CATS[method] || []).find(c => c.value === value); }
@@ -99,6 +99,76 @@ function Cover({ game, alt, className }) {
   });
 }
 
+/* ============================ SVG icons =============================== */
+const ICONS = {
+  // Main nav
+  grid: [
+    ["rect", { x:3,  y:3,  width:6, height:6, rx:1 }],
+    ["rect", { x:11, y:3,  width:6, height:6, rx:1 }],
+    ["rect", { x:3,  y:11, width:6, height:6, rx:1 }],
+    ["rect", { x:11, y:11, width:6, height:6, rx:1 }],
+  ],
+  users: [
+    ["circle", { cx:7,  cy:6, r:3 }],
+    ["path",   { d:"M1 18v-1a6 6 0 0 1 12 0v1" }],
+    ["circle", { cx:14, cy:5, r:2 }],
+    ["path",   { d:"M18 18v-1a4 4 0 0 0-3-3.8" }],
+  ],
+  star: [
+    ["polygon", { points:"10,1.5 12.6,7.2 19,8.1 14.5,12.5 15.6,18.5 10,15.5 4.4,18.5 5.5,12.5 1,8.1 7.4,7.2" }],
+  ],
+  person: [
+    ["circle", { cx:10, cy:6,  r:3 }],
+    ["path",   { d:"M4 18v-1a6 6 0 0 1 12 0v1" }],
+  ],
+  // Genre sub-nav
+  zap: [
+    ["path", { d:"M11 2L4 11h6l-1 7 7-9h-6z" }],
+  ],
+  target: [
+    ["circle", { cx:10, cy:10, r:7 }],
+    ["circle", { cx:10, cy:10, r:3 }],
+    ["path",   { d:"M10 1v4M10 15v4M1 10h4M15 10h4" }],
+  ],
+  sword: [
+    ["path", { d:"M4 16L15 5" }],
+    ["path", { d:"M15 5h-3V2h3" }],
+    ["path", { d:"M4 16l-2 2" }],
+    ["path", { d:"M7 13l2 2" }],
+  ],
+  flag: [
+    ["path", { d:"M4 3v14M4 3l12 4-12 4" }],
+  ],
+  gem: [
+    ["path", { d:"M3 8l7-6 7 6-7 10z" }],
+    ["path", { d:"M3 8h14M7 2l-4 6M13 2l4 6" }],
+  ],
+  dice: [
+    ["rect",   { x:2, y:2, width:16, height:16, rx:2 }],
+    ["circle", { cx:7,  cy:7,  r:1, fill:"currentColor", stroke:"none" }],
+    ["circle", { cx:13, cy:7,  r:1, fill:"currentColor", stroke:"none" }],
+    ["circle", { cx:10, cy:10, r:1, fill:"currentColor", stroke:"none" }],
+    ["circle", { cx:7,  cy:13, r:1, fill:"currentColor", stroke:"none" }],
+    ["circle", { cx:13, cy:13, r:1, fill:"currentColor", stroke:"none" }],
+  ],
+  shield: [
+    ["path", { d:"M10 2l7 3v4.5C17 14.5 10 18 10 18S3 14.5 3 9.5V5z" }],
+  ],
+};
+
+function Icon({ name, size = 20 }) {
+  return h("svg", {
+    width: size, height: size,
+    viewBox: "0 0 20 20",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  },
+  ...(ICONS[name] || []).map(([tag, attrs], i) => h(tag, { key: i, ...attrs })));
+}
+
 /* ============================ Shared UI =============================== */
 const Nlogo = () => h("span", { className: "nlogo" }, "Nintendo");
 
@@ -114,16 +184,35 @@ function BottomNav({ active, go }) {
     NAV_TABS.map(t => h("div",
       { key: t.method, className: "bn-item" + (t.method === active ? " active" : ""),
         onClick: () => go({ name: "category", method: t.method }) },
-      h("span", { className: "bn-icon" }, t.icon), h("span", { className: "bn-label" }, t.label))));
+      h("span", { className: "bn-icon" }, h(Icon, { name: t.icon, size: 22 })),
+      h("span", { className: "bn-label" }, t.label))));
+}
+
+const GENRE_NAV_TABS = [
+  { value: "action", label: "액션",      icon: "zap"    },
+  { value: "fps",    label: "슈팅",      icon: "target" },
+  { value: "rpg",    label: "RPG",       icon: "sword"  },
+  { value: "sports", label: "스포츠",    icon: "flag"   },
+  { value: "indie",  label: "인디",      icon: "gem"    },
+  { value: "rogue",  label: "로그라이크", icon: "dice"   },
+  { value: "moba",   label: "MOBA",      icon: "shield" },
+];
+
+function GenreBottomNav({ active, go }) {
+  return h("div", { className: "bottom-nav genre-bottom-nav" },
+    GENRE_NAV_TABS.map(t => h("div",
+      { key: t.value, className: "bn-item" + (t.value === active ? " active" : ""),
+        onClick: () => go({ name: "list", method: "genre", value: t.value }) },
+      h("span", { className: "bn-icon" }, h(Icon, { name: t.icon, size: 18 })),
+      h("span", { className: "bn-label" }, t.label))));
 }
 
 /* Image card with caption overlay (used for category cards & picker). */
-/* 1. ImageCard 업데이트 (tall 속성 추가) */
 function ImageCard({ game, title, sub, badge, wide, tall, onClick }) {
   let cls = "img-card";
   if (wide) cls += " wide";
-  if (tall) cls += " tall"; // 세로로 2칸을 차지하는 카드용
-  
+  if (tall) cls += " tall";
+
   return h("div", { className: cls, onClick },
     game ? h(Cover, { game, alt: title, className: "card-img" }) : null,
     h("div", { className: "card-shade" }),
@@ -152,12 +241,11 @@ function Picker({ go }) {
       onClick: () => go({ name: "category", method }) 
     });
 
-  return h("div", { className: "screen has-nav" },
+  return h("div", { className: "screen" },
     h("div", { className: "topbar" }, h(Nlogo)),
     h("h1", { className: "page-title" }, "추천 방식 선택"),
     h("p", { className: "page-sub" }, "\"오늘은 어떤 모험이 끌리시나요?\""),
     h("div", { className: "method-grid" },
-      // 스크린샷과 정확히 일치하는 텍스트와 그리드 클래스
       card("tall", "genre", "장르", "장르별 추천", "액션, RPG 등 취향대로!"),
       card("", "human", "인원", "인원별 추천", "혼자서 해도, 다같이 해도 즐거운 게임!"),
       card("", "ip", "IP", "대표 IP별 추천", "마리오, 젤다 등 인기 시리즈!"),
@@ -228,9 +316,6 @@ function Detail({ id, go }) {
   const summary = g.summary || "특수 경찰이 되어,\n인류를 위협하는 존재에 맞서라!";
   const recs = g.features.map(f => `"${f} 좋아하는 분"`);
 
-  // Genre icon mapping
-  const genreIcons = { action: "🍄", fps: "🔫", rpg: "⚔️", sports: "🏎️", indie: "⭐", rogue: "💀", moba: "🏰" };
-
   return h("div", { className: "screen has-nav detail-screen" },
     h(TopBar, { onBack: () => go({ name: "picker" }), onHome: () => go({ name: "landing" }) }),
     
@@ -270,9 +355,6 @@ function Detail({ id, go }) {
     h("div", { className: "section-label" }, "🎯 이런 분에게 강력 추천!"),
     h("div", { className: "recommends" }, recs.map((r, i) => h("p", { key: i }, r))),
 
-    // Bottom Genre Navigation (The red grid)
-   
-    
   );
 }
 /* ============================ Router ================================== */
@@ -282,8 +364,11 @@ function App() {
     (document.querySelector('.app-frame') || window).scrollTo({ top: 0, behavior: 'instant' });
     setRoute(r);
   };
-  const showNav = route.name !== "landing";
+  
+  const showNav   = route.name !== "landing" && route.name !== "picker";
+  const isGenreList = route.name === "list" && route.method === "genre";
   const navActive = (route.name === "category" || route.name === "list") ? route.method : null;
+
   let view;
   switch (route.name) {
     case "picker":   view = h(Picker, { go }); break;
@@ -292,8 +377,11 @@ function App() {
     case "detail":   view = h(Detail, { id: route.id, go }); break;
     default:         view = h(Landing, { go });
   }
-  return h("div", { className: "app-frame" },
-    view,
-    showNav ? h(BottomNav, { active: navActive, go }) : null);
+
+  const nav = !showNav ? null
+    : isGenreList ? h(GenreBottomNav, { active: route.value, go })
+    : h(BottomNav, { active: navActive, go });
+
+  return h("div", { className: "app-frame" }, view, nav);
 }
 ReactDOM.createRoot(document.getElementById("root")).render(h(App));

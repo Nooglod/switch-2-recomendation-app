@@ -58,7 +58,7 @@ window.GAMES = [
     "genre": "로그라이트/슈팅",
     "players": "3인 이상",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_4",
+    "youtube": "https://www.youtube.com/embed/hXx-ZY60fN4",
     "summary": "",
     "features": [
       "탄막 액션 전투",
@@ -442,7 +442,7 @@ window.GAMES = [
     "genre": "전략/RPG",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_28",
+    "youtube": "https://www.youtube.com/embed/pOfW-qdsvpU",
     "summary": "",
     "features": [
       "3인이상",
@@ -458,7 +458,7 @@ window.GAMES = [
     "genre": "RPG",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_29",
+    "youtube": "https://www.youtube.com/embed/eNML51GuBew",
     "summary": "",
     "features": [
       "액션 스타일 배틀",
@@ -474,7 +474,7 @@ window.GAMES = [
     "genre": "슈팅/액션",
     "players": "1인용",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_30",
+    "youtube": "https://www.youtube.com/embed/SPVRNBKaWQY",
     "summary": "",
     "features": [
       "스플래툰 스타일 전투",
@@ -490,7 +490,7 @@ window.GAMES = [
     "genre": "레이싱",
     "players": "3인 이상",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_31",
+    "youtube": "https://www.youtube.com/embed/z3puFLFDfxE",
     "summary": "",
     "features": [
       "개성 있는 머신 시스템",
@@ -506,7 +506,7 @@ window.GAMES = [
     "genre": "슈팅/FPS",
     "players": "2인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_32",
+    "youtube": "https://www.youtube.com/embed/H3LAkr0ANgw",
     "summary": "",
     "features": [
       "카피 능력 활용",
@@ -522,7 +522,7 @@ window.GAMES = [
     "genre": "레이싱",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_33",
+    "youtube": "https://www.youtube.com/embed/n9FlGHj9-GA",
     "summary": "",
     "features": [
       "개성 있는 머신 시스템",
@@ -538,7 +538,7 @@ window.GAMES = [
     "genre": "오픈월드/RPG",
     "players": "1인용",
     "mbti": "",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_34",
+    "youtube": "https://www.youtube.com/embed/20Hb_onhtUU",
     "summary": "",
     "features": [
       "탑승형 메카 액션",
@@ -554,7 +554,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_35",
+    "youtube": "https://www.youtube.com/embed/GKXS_YA9s7E",
     "summary": "",
     "features": [
       "다양한 영웅 시스템",
@@ -570,7 +570,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXFJ",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_36",
+    "youtube": "https://www.youtube.com/embed/02Pf_OHXDHg",
     "summary": "",
     "features": [
       "전략형 배틀 플레이",
@@ -586,7 +586,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "3인 이상",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_37",
+    "youtube": "https://www.youtube.com/embed/Hku89o38-hQ",
     "summary": "",
     "features": [
       "팀 기반 스포츠 액션",
@@ -602,7 +602,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_38",
+    "youtube": "https://www.youtube.com/embed/spXZHz4ZXUY",
     "summary": "",
     "features": [
       "콤비 액션 시스템션",
@@ -618,7 +618,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXFP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_39",
+    "youtube": "https://www.youtube.com/embed/GgXHaZiym9U",
     "summary": "\"조준(에임)이 너무 어려워!\" → 바닥만 칠해도 팀을 승리로 이끄는 버스 기사 가능! 트렌디한 비주얼과 신나는 락 사운드를 좋아하는 힙스터 바쁜 일상 속, 딱 3분씩만 매콤하게 몰입해서 한 판 즐기고 싶으신 분",
     "features": [
       "가게 운영 시스템",
@@ -634,7 +634,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXFJ",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_40",
+    "youtube": "https://www.youtube.com/embed/iofYDsA2yqg",
     "summary": "",
     "features": [
       "감성적인 스토리",
@@ -650,7 +650,7 @@ window.GAMES = [
     "genre": "액션",
     "players": "1인용",
     "mbti": "XXTP",
-    "youtube": "https://www.youtube.com/embed/VIDEO_ID_41",
+    "youtube": "https://www.youtube.com/embed/gX4cGcwmdsY",
     "summary": "",
     "features": [
       "속도감 있는 액션",
