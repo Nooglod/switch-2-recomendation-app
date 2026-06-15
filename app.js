@@ -235,7 +235,7 @@ function GenreBottomNav({ active, go }) {
 
 function MethodBottomNav({ tabs, method, active, go }) {
   const size = tabs.length >= 6 ? 18 : 22;
-  return h("div", { className: "bottom-nav genre-bottom-nav" },
+  return h("div", { className: "bottom-nav genre-bottom-nav", style: { gridTemplateColumns: `repeat(${tabs.length}, 1fr)` } },
     tabs.map(t => h("div",
       { key: t.value, className: "bn-item" + (t.value === active ? " active" : ""),
         onClick: () => go({ name: "list", method, value: t.value }) },
