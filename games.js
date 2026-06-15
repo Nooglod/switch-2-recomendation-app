@@ -643,5 +643,85 @@ window.GAMES = [
     ],
     "image": "images/game41.svg",
     "en": "Dead Cells"
+  },
+  {
+    "id": "game42",
+    "name": "젤다의 전설 왕국의 눈물",
+    "genre": "오픈월드/RPG",
+    "players": "1인용",
+    "mbti": "XXTJ",
+    "youtube": "https://www.youtube.com/embed/SSVYVgm4tH4",
+    "summary": "하늘과 땅, 그리고 지하를 탐험하라! 울트라핸드로 뭐든 만들어내며 하이랄을 구하는 링크의 새로운 모험",
+    "features": [
+      "자유로운 창작 전투",
+      "하늘·지하 오픈월드 탐험",
+      "독창적인 퍼즐 해결"
+    ],
+    "image": "images/game42.svg",
+    "en": "The Legend of Zelda Tears of the Kingdom"
+  },
+  {
+    "id": "game43",
+    "name": "슈퍼 스매시브라더스 얼티밋",
+    "genre": "액션/격투",
+    "players": "3인 이상",
+    "mbti": "XXTP",
+    "youtube": "https://www.youtube.com/embed/TUzZKLirkrE",
+    "summary": "모든 캐릭터가 한자리에! 닌텐도 역사상 최대 규모의 대난투 파이터로 친구들과 맞붙어라",
+    "features": [
+      "80명 이상의 파이터",
+      "화려한 다인용 배틀",
+      "다양한 게임 모드"
+    ],
+    "image": "images/game43.svg",
+    "en": "Super Smash Bros Ultimate"
+  },
+  {
+    "id": "game44",
+    "name": "모여봐요 동물의 숲",
+    "genre": "시뮬레이션/어드벤처",
+    "players": "3인 이상",
+    "mbti": "XXFJ",
+    "youtube": "https://www.youtube.com/embed/xi2A8Z1GUtw",
+    "summary": "나만의 섬 생활을 시작하자! 계절이 바뀌고, 주민들과 친해지며 세상에 하나뿐인 섬을 꾸며보세요",
+    "features": [
+      "나만의 섬 꾸미기",
+      "계절별 이벤트 시스템",
+      "친구 섬 방문 플레이"
+    ],
+    "image": "images/game44.svg",
+    "en": "Animal Crossing New Horizons"
+  },
+  {
+    "id": "game45",
+    "name": "몬스터 헌터 라이즈",
+    "genre": "액션/RPG",
+    "players": "3인 이상",
+    "mbti": "XXTJ",
+    "youtube": "https://www.youtube.com/embed/sD6eLsO0SJQ",
+    "summary": "사냥 본능을 깨워라! 갈마수를 타고 거대한 몬스터를 토벌하는 짜릿한 사냥 생활이 시작된다",
+    "features": [
+      "대형 몬스터 사냥",
+      "다양한 무기 선택",
+      "최대 4인 협동 퀘스트"
+    ],
+    "image": "images/game45.svg",
+    "en": "Monster Hunter Rise"
+  },
+  {
+    "id": "game46",
+    "name": "스타듀 밸리",
+    "genre": "시뮬레이션/인디",
+    "players": "3인 이상",
+    "mbti": "XXFJ",
+    "youtube": "https://www.youtube.com/embed/FjJx6u_5RdU",
+    "summary": "도시를 떠나 시골 마을로! 농사를 짓고, 주민들과 친해지고, 광산을 탐험하며 나만의 전원생활을 꾸며보세요",
+    "features": [
+      "농장 경영 시스템",
+      "마을 주민과 관계 형성",
+      "광산 탐험 및 전투"
+    ],
+    "image": "images/game46.svg",
+    "en": "Stardew Valley"
   }
 ];

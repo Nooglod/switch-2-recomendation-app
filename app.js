@@ -10,7 +10,7 @@ const RAWG_KEY = (window.RAWG_API_KEY || "").trim();
 /* ============================ Category definitions ===================== */
 /* Genre buckets (some games' genres are granular, so we match by keyword).
    Indie / roguelike aren't in the genre field, so use curated id sets. */
-const INDIE = new Set(["game4","game5","game7","game11","game12","game38","game39","game40","game41"]);
+const INDIE = new Set(["game4","game5","game7","game11","game12","game38","game39","game40","game41","game46"]);
 const ROGUE = new Set(["game4","game11","game12","game41","game21"]);
 
 const GENRE_CATS = [
