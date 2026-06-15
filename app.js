@@ -341,7 +341,7 @@ function Category({ method, go }) {
         wide: (method === "genre" && (i === 0 || i === 3 || i === 6)) ||
               (method === "human" && i === 2) ||
               (method === "ip"    && i === 6),
-        tall: (method === "human" && i === 1) ||
+        tall: (method === "human" && (i === 0 || i === 1)) ||
               (method === "ip"    && (i === 0 || i === 3)),
         onClick: () => go({ name: "list", method, value: c.value }),
       }))));
