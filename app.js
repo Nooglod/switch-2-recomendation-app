@@ -59,6 +59,29 @@ const NAV_TABS = [
   { method: "mbti",  label: "MBTI", icon: "images/icons/MBTI.png"    },
 ];
 
+const HUMAN_NAV_TABS = [
+  { value: "1인용",    label: "1인",  icon: "images/icons/players.png"  },
+  { value: "2인용",    label: "2인",  icon: "images/icons/players2.png" },
+  { value: "3인 이상", label: "3인+", icon: "images/icons/players3.png" },
+];
+
+const IP_NAV_TABS = [
+  { value: "마리오",      label: "마리오",   icon: "images/icons/mario.png"      },
+  { value: "젤다",        label: "젤다",     icon: "images/icons/zelda.png"      },
+  { value: "포켓몬",      label: "포켓몬",   icon: "images/icons/pokemon.png"    },
+  { value: "제노블레이드", label: "제노",     icon: "images/icons/xenoblade.png"  },
+  { value: "스플래툰",    label: "스플래툰", icon: "images/icons/splatoon.png"   },
+  { value: "커비",        label: "커비",     icon: "images/icons/kirby.png"      },
+  { value: "기타",        label: "기타",     icon: "images/icons/other.png"      },
+];
+
+const MBTI_NAV_TABS = [
+  { value: "XXTP", label: "XXTP", icon: "images/icons/xxtp.png" },
+  { value: "XXFJ", label: "XXFJ", icon: "images/icons/xxfj.png" },
+  { value: "XXFP", label: "XXFP", icon: "images/icons/xxfp.png" },
+  { value: "XXTJ", label: "XXTJ", icon: "images/icons/xxtj.png" },
+];
+
 function catFor(method, value) { return (CATS[method] || []).find(c => c.value === value); }
 function gamesFor(method, value) { const c = catFor(method, value); return c ? GAMES.filter(c.match) : []; }
 function repGame(method, value) { return gamesFor(method, value)[0]; }
@@ -207,6 +230,16 @@ function GenreBottomNav({ active, go }) {
       { key: t.value, className: "bn-item" + (t.value === active ? " active" : ""),
         onClick: () => go({ name: "list", method: "genre", value: t.value }) },
       h("span", { className: "bn-icon" }, h("img", { src: t.icon, width: 18, height: 18, style: { objectFit: "contain" } })),
+      h("span", { className: "bn-label" }, t.label))));
+}
+
+function MethodBottomNav({ tabs, method, active, go }) {
+  const size = tabs.length >= 6 ? 18 : 22;
+  return h("div", { className: "bottom-nav genre-bottom-nav" },
+    tabs.map(t => h("div",
+      { key: t.value, className: "bn-item" + (t.value === active ? " active" : ""),
+        onClick: () => go({ name: "list", method, value: t.value }) },
+      h("span", { className: "bn-icon" }, h("img", { src: t.icon, width: size, height: size, style: { objectFit: "contain" } })),
       h("span", { className: "bn-label" }, t.label))));
 }
 
@@ -393,9 +426,9 @@ function App() {
     setRoute(r);
   };
   
-  const showNav   = route.name !== "landing" && route.name !== "picker";
-  const isGenreList = route.name === "list" && route.method === "genre";
-  const navActive = (route.name === "category" || route.name === "list") ? route.method : null;
+  const showNav    = route.name !== "landing" && route.name !== "picker";
+  const activeMethod = (route.name === "category" || route.name === "list") ? route.method : null;
+  const activeValue  = route.name === "list" ? route.value : null;
 
   let view;
   switch (route.name) {
@@ -407,9 +440,14 @@ function App() {
     default:          view = h(Landing, { go });
   }
 
-  const nav = !showNav ? null
-    : isGenreList ? h(GenreBottomNav, { active: route.value, go })
-    : h(BottomNav, { active: navActive, go });
+  let nav = null;
+  if (showNav) {
+    if      (activeMethod === "genre") nav = h(GenreBottomNav,  { active: activeValue, go });
+    else if (activeMethod === "human") nav = h(MethodBottomNav, { tabs: HUMAN_NAV_TABS, method: "human", active: activeValue, go });
+    else if (activeMethod === "ip")    nav = h(MethodBottomNav, { tabs: IP_NAV_TABS,    method: "ip",    active: activeValue, go });
+    else if (activeMethod === "mbti")  nav = h(MethodBottomNav, { tabs: MBTI_NAV_TABS,  method: "mbti",  active: activeValue, go });
+    else                               nav = h(BottomNav,       { active: activeMethod, go });
+  }
 
   return h("div", { className: "app-frame" }, view, nav);
 }
