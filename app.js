@@ -357,10 +357,10 @@ function Results({ method, value, go }) {
     c && c.sub ? h("p", { className: "page-sub" }, "\"" + c.sub + "\"") : null,
     h("div", { className: "big-list" },
       list.length === 0 ? h("div", { className: "empty" }, "해당 조건의 게임이 없어요.") : null,
-      list.map(g => h(BigCard, { key: g.id, game: g, onClick: () => go({ name: "detail", id: g.id }) }))));
+      list.map(g => h(BigCard, { key: g.id, game: g, onClick: () => go({ name: "detail", id: g.id, method, value }) }))));
 }
 
-function Detail({ id, go }) {
+function Detail({ id, method, value, go }) {
   const g = GAMES.find(x => x.id === id);
   if (!g) return h("div", { className: "screen" }, h("p", { className: "empty" }, "게임을 찾을 수 없어요."));
 
@@ -369,8 +369,8 @@ function Detail({ id, go }) {
   const recs = g.features.map(f => `"${f} 좋아하는 분"`);
 
   return h("div", { className: "screen has-nav detail-screen" },
-    h(TopBar, { onBack: () => go({ name: "picker" }), onHome: () => go({ name: "landing" }) }),
-    
+    h(TopBar, { onBack: () => method ? go({ name: "list", method, value }) : go({ name: "picker" }), onHome: () => go({ name: "landing" }) }),
+
     // Title & Tags area
     h("h1", { className: "detail-title" }, g.name),
     h("div", { className: "tags" },
@@ -427,26 +427,27 @@ function App() {
   };
   
   const showNav    = route.name !== "landing" && route.name !== "picker";
-  const activeMethod = (route.name === "category" || route.name === "list") ? route.method : null;
-  const activeValue  = route.name === "list" ? route.value : null;
+  const activeMethod = (route.name === "category" || route.name === "list" || route.name === "detail") ? route.method : null;
+  const activeValue  = (route.name === "list" || route.name === "detail") ? route.value : null;
 
   let view;
   switch (route.name) {
     case "picker":    view = h(Picker, { go }); break;
     case "category":  view = h(Category, { method: route.method, go }); break;
     case "list":      view = h(Results, { method: route.method, value: route.value, go }); break;
-    case "detail":    view = h(Detail, { id: route.id, go }); break;
+    case "detail":    view = h(Detail, { id: route.id, method: route.method, value: route.value, go }); break;
     case "all-games": view = h(AllGames, { go }); break;
     default:          view = h(Landing, { go });
   }
 
   let nav = null;
   if (showNav) {
-    if      (activeMethod === "genre") nav = h(GenreBottomNav,  { active: activeValue, go });
-    else if (activeMethod === "human") nav = h(MethodBottomNav, { tabs: HUMAN_NAV_TABS, method: "human", active: activeValue, go });
-    else if (activeMethod === "ip")    nav = h(MethodBottomNav, { tabs: IP_NAV_TABS,    method: "ip",    active: activeValue, go });
-    else if (activeMethod === "mbti")  nav = h(MethodBottomNav, { tabs: MBTI_NAV_TABS,  method: "mbti",  active: activeValue, go });
-    else                               nav = h(BottomNav,       { active: activeMethod, go });
+    if      (route.name === "category")  nav = h(BottomNav,       { active: activeMethod, go });
+    else if (activeMethod === "genre")   nav = h(GenreBottomNav,  { active: activeValue, go });
+    else if (activeMethod === "human")   nav = h(MethodBottomNav, { tabs: HUMAN_NAV_TABS, method: "human", active: activeValue, go });
+    else if (activeMethod === "ip")      nav = h(MethodBottomNav, { tabs: IP_NAV_TABS,    method: "ip",    active: activeValue, go });
+    else if (activeMethod === "mbti")    nav = h(MethodBottomNav, { tabs: MBTI_NAV_TABS,  method: "mbti",  active: activeValue, go });
+    else                                 nav = h(BottomNav,       { active: activeMethod, go });
   }
 
   return h("div", { className: "app-frame" }, view, nav);
